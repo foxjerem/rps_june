@@ -19,11 +19,22 @@ Game.prototype.PAIRS = {
 };
 
 Game.prototype.winner = function() {
- 
-  if ( this.PAIRS[this.player1.pick]['beats'] === this.player2.pick) {
+ 		
+ 	if (this._isSamePick()) { return null; };
+
+  if ( this.__isPlayer1Win()) {
   	return this.player1;
   };
+  
   return this.player2;
 
+};
+
+Game.prototype._isSamePick = function() {
+	return this.player1.pick === this.player2.pick
+};
+
+Game.prototype.__isPlayer1Win = function() {
+	return this.PAIRS[this.player1.pick]['beats'] === this.player2.pick
 };
 
