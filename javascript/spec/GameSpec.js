@@ -1,4 +1,4 @@
-describe("Rock-Paper-Scissors", function() {
+describe("Game", function() {
 
   var player1, player2, game;
   
