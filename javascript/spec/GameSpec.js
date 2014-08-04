@@ -197,13 +197,13 @@ describe("Game", function() {
     describe('any identical picks', function() {
 
       it('should result in no winner', function() {
-        var drawGameResults = ['rock', 'paper', 'scissors'].map(function(x) {
+        var drawGameResults = ['rock', 'paper', 'scissors', 'spock', 'lizard'].map(function(x) {
           player1.picks(x);
           player2.picks(x);
           return game.winner();
         });
 
-        expect(drawGameResults).toEqual([null, null, null]);
+        expect(drawGameResults).toEqual([null, null, null, null, null]);
 
       });
 

@@ -11,13 +11,12 @@ Game.prototype.PAIRS = {
   'spock': 		{ 'beats': ['scissors', 'rock'] } 
 };
 
+
 Game.prototype.winner = function() {
  		
- 	if (this._isSamePick()) { return null; };
+ 	if (this._isSamePick())     { return null;          };
 
-  if ( this.__isPlayer1Win()) {
-  	return this.player1;
-  };
+  if ( this.__isPlayer1Win()) { return this.player1;  };
   
   return this.player2;
 
