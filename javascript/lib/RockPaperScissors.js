@@ -13,9 +13,11 @@ function Game(player1, player2) {
 };
 
 Game.prototype.PAIRS = {
-  'rock':     { 'beats': 'scissors' },
-  'paper':    { 'beats': 'rock' },
-  'scissors': { 'beats': 'paper' }
+  'rock':     { 'beats': ['scissors', 'lizard'] },
+  'paper':    { 'beats': ['rock', 'spock'] },
+  'scissors': { 'beats': ['paper', 'lizard'] },
+  'lizard':   { 'beats': ['paper', 'spock'] },
+  'spock': 		{ 'beats': ['scissors', 'rock'] } 
 };
 
 Game.prototype.winner = function() {
@@ -35,6 +37,6 @@ Game.prototype._isSamePick = function() {
 };
 
 Game.prototype.__isPlayer1Win = function() {
-	return this.PAIRS[this.player1.pick]['beats'] === this.player2.pick
+	return this.PAIRS[this.player1.pick]['beats'].indexOf(this.player2.pick) !== -1
 };
 
