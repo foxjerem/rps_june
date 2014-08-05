@@ -17,6 +17,7 @@ describe("Game", function() {
         player1.picks('rock');
         player2.picks('scissors');
         expect(game.winner()).toBe(player1);
+        expect(game.winningMessage()).toBe('rock crushes scissors')
 
       });
 
@@ -25,6 +26,7 @@ describe("Game", function() {
         player1.picks('rock');
         player2.picks('lizard');
         expect(game.winner()).toBe(player1);
+        expect(game.winningMessage()).toBe('rock squashes lizard')
 
       });
 
@@ -33,14 +35,17 @@ describe("Game", function() {
         player1.picks('rock');
         player2.picks('paper');
         expect(game.winner()).toBe(player2);
+        expect(game.winningMessage()).toBe('paper smothers rock')
+
 
       });
 
       it('should lose to spock', function() {
 
         player1.picks('rock');
-        player2.picks('paper');
+        player2.picks('spock');
         expect(game.winner()).toBe(player2);
+        expect(game.winningMessage()).toBe('spock vaporises rock')
 
       });
 
@@ -53,6 +58,7 @@ describe("Game", function() {
         player1.picks('paper');
         player2.picks('rock');
         expect(game.winner()).toBe(player1);
+        expect(game.winningMessage()).toBe('paper smothers rock')
 
       });
       
@@ -61,6 +67,7 @@ describe("Game", function() {
         player1.picks('paper');
         player2.picks('spock');
         expect(game.winner()).toBe(player1);
+        expect(game.winningMessage()).toBe('paper disproves spock')
 
       });
 
@@ -69,6 +76,7 @@ describe("Game", function() {
         player1.picks('paper');
         player2.picks('scissors');
         expect(game.winner()).toBe(player2);
+        expect(game.winningMessage()).toBe('scissors cut paper')
 
       });
 
@@ -77,6 +85,7 @@ describe("Game", function() {
         player1.picks('paper');
         player2.picks('lizard');
         expect(game.winner()).toBe(player2);
+        expect(game.winningMessage()).toBe('lizard eats paper')
 
       });
 
@@ -89,6 +98,7 @@ describe("Game", function() {
         player1.picks('scissors');
         player2.picks('paper');
         expect(game.winner()).toBe(player1);
+        expect(game.winningMessage()).toBe('scissors cut paper')
 
       });
 
@@ -97,6 +107,7 @@ describe("Game", function() {
         player1.picks('scissors');
         player2.picks('lizard');
         expect(game.winner()).toBe(player1);
+        expect(game.winningMessage()).toBe('scissors decapitate lizard')
 
       });
 
@@ -105,14 +116,16 @@ describe("Game", function() {
         player1.picks('scissors');
         player2.picks('rock');
         expect(game.winner()).toBe(player2);
+        expect(game.winningMessage()).toBe('rock crushes scissors')
 
       });
 
       it('should lose to spock', function() {
 
         player1.picks('scissors');
-        player2.picks('rspock');
+        player2.picks('spock');
         expect(game.winner()).toBe(player2);
+        expect(game.winningMessage()).toBe('spock smashes scissors')
 
       });
 
@@ -125,6 +138,7 @@ describe("Game", function() {
         player1.picks('lizard');
         player2.picks('paper');
         expect(game.winner()).toBe(player1);
+        expect(game.winningMessage()).toBe('lizard eats paper')
 
       });
 
@@ -133,6 +147,7 @@ describe("Game", function() {
         player1.picks('lizard');
         player2.picks('spock');
         expect(game.winner()).toBe(player1);
+        expect(game.winningMessage()).toBe('lizard poisons spock')
 
       });
 
@@ -141,6 +156,7 @@ describe("Game", function() {
         player1.picks('lizard');
         player2.picks('rock');
         expect(game.winner()).toBe(player2);
+        expect(game.winningMessage()).toBe('rock squashes lizard')
 
       });
 
@@ -149,6 +165,7 @@ describe("Game", function() {
         player1.picks('lizard');
         player2.picks('scissors');
         expect(game.winner()).toBe(player2);
+        expect(game.winningMessage()).toBe('scissors decapitate lizard')
 
       });
 
@@ -161,6 +178,7 @@ describe("Game", function() {
         player1.picks('spock');
         player2.picks('scissors');
         expect(game.winner()).toBe(player1);
+        expect(game.winningMessage()).toBe('spock smashes scissors')
 
       });
 
@@ -169,6 +187,7 @@ describe("Game", function() {
         player1.picks('spock');
         player2.picks('rock');
         expect(game.winner()).toBe(player1);
+        expect(game.winningMessage()).toBe('spock vaporises rock')
 
       });
 
@@ -177,6 +196,7 @@ describe("Game", function() {
         player1.picks('spock');
         player2.picks('lizard');
         expect(game.winner()).toBe(player2);
+        expect(game.winningMessage()).toBe('lizard poisons spock')
 
       });
 
@@ -185,6 +205,7 @@ describe("Game", function() {
         player1.picks('spock');
         player2.picks('paper');
         expect(game.winner()).toBe(player2);
+        expect(game.winningMessage()).toBe('paper disproves spock')
 
       });
 
@@ -204,6 +225,7 @@ describe("Game", function() {
         });
 
         expect(drawGameResults).toEqual([null, null, null, null, null]);
+        expect(game.winningMessage()).toBe('DRAW')
 
       });
 

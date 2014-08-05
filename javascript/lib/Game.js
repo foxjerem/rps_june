@@ -4,28 +4,62 @@ function Game(player1, player2) {
 };
 
 Game.prototype.PAIRS = {
-  'rock':     { 'beats': ['scissors', 'lizard'] },
-  'paper':    { 'beats': ['rock', 'spock'] },
-  'scissors': { 'beats': ['paper', 'lizard'] },
-  'lizard':   { 'beats': ['paper', 'spock'] },
-  'spock': 		{ 'beats': ['scissors', 'rock'] } 
+  rock:     { scissors : 'crushes', lizard : 'squashes'   },
+  paper:    { rock : 'smothers', spock : 'disproves'      },
+  scissors: { lizard : 'decapitate', paper : 'cut'        },
+  lizard:   { spock : 'poisons', paper : 'eats'           },
+  spock:    { scissors : 'smashes', rock : 'vaporises'    }
 };
 
 
 Game.prototype.winner = function() {
- 		
- 	if (this._isSamePick())     { return null;          };
+ 	
+  if (this._isSamePick())     { return null; };
+ 
+  if(this._winningVerbFor(this.player1.pick, this.player2.pick)) {
+    return this.player1;
+  } else {
+    return this.player2;
+  };
 
-  if ( this.__isPlayer1Win()) { return this.player1;  };
+};
+
+Game.prototype.loser = function() {
+
+  return (this.winner() === this.player1 ? this.player2 : this.player1);
+
+};
+
+Game.prototype.winningMessage = function() {
   
-  return this.player2;
+  var message
+
+  if (this.winner()) {
+   message =  [this.winner().pick, this._winningVerbFor(this.winner().pick, 
+    this.loser().pick), this.loser().pick].join(' ');
+  } else {
+    message = 'DRAW';
+  };
+
+  return message
 
 };
 
 Game.prototype._isSamePick = function() {
-	return this.player1.pick === this.player2.pick
+	
+  return this.player1.pick === this.player2.pick;
+
 };
 
 Game.prototype.__isPlayer1Win = function() {
-	return this.PAIRS[this.player1.pick]['beats'].indexOf(this.player2.pick) !== -1
+	
+  return this._winningVerb !== null;
+
 };
+
+Game.prototype._winningVerbFor = function(pick, opponentPick) {
+  
+  return this.PAIRS[pick][opponentPick];
+
+};
+
