@@ -45,6 +45,15 @@ Game.prototype.winningMessage = function() {
 
 };
 
+Game.prototype.nameMessage = function() {
+  if(this.winner()){
+    return this.winner().name + ' wins!';
+  } else {
+    return '';
+  };
+
+};
+
 Game.prototype._isSamePick = function() {
 	
   return this.player1.pick === this.player2.pick;
