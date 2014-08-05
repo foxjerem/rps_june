@@ -10,5 +10,5 @@ Player.prototype.picks = function(pick) {
 };
 
 Player.prototype.autopick = function() {
-	this.picks(this.CHOICES[Math.floor(Math.random()*4)]);
+	this.picks(this.CHOICES[Math.floor(Math.random()*5)]);
 };

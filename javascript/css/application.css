@@ -18,13 +18,26 @@ h3 {
 }
 
 h2 {
-	font-size: 60pt;
-	margin-bottom: 0%;
 	color: black;
+	font-size: 40pt;
+}
+
+#result {
+	width: 50%;
+	margin: 0 auto;
+}
+#result li {
+	list-style: none;
+	color: white;
+	font-size: 40pt;
+	border-radius:8px;
+	background-color: black;
+	margin: 10px;
+	text-align: center;
 }
 
 section.choices img {
-	width: 200px;
+	width: 250px;
 	height: auto;	
 	cursor: pointer;
 	opacity: 0.75;
@@ -35,9 +48,8 @@ section.choices img:hover {
 	opacity: 1;
 }
 
-
 section.game {
-	margin-top: 5%;
+	margin-top: 1%;
 	margin-right: 10%;
 	margin-left: 10%;
 	margin-bottom: 1%;

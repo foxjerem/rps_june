@@ -8,16 +8,14 @@
 			<h1>Rock Paper Scissors Lizard Spock</h1>
 			<h3>For the select few for whom Rock, Paper, Scissors doesn't quite cut the mustard...</h3>
 			<section class='choices'>
-				<img id='rock' src='http://i.imgur.com/lGHZDFk.jpg' data-pick='rock'>
-				<img id='paper' src='http://i.imgur.com/C8l9hX1.jpg' data-pick='paper'>
 				<img id='scissors' src='http://i.imgur.com/GgaGtnl.jpg' data-pick='scissors'>
+				<img id='paper' src='http://i.imgur.com/C8l9hX1.jpg' data-pick='paper'>
+				<img id='rock' src='http://i.imgur.com/lGHZDFk.jpg' data-pick='rock'>
 				<img id ='lizard' src='http://i.imgur.com/mKeep.jpg' data-pick='lizard'>
 				<img id='spock' src='http://i.imgur.com/RpuaX6p.jpg' data-pick='spock'>
 			</section>
-			<h2 id='score-counter'> </h2>
-			<h2 id='result'></h2>
-			<h2 id='winner'></h2>
-	
+			<h2 id="score-counter">Human: 0 | Computer: 0 | Draw: 0</h2>
+			<ul id='result'></ul>
 			<script src='lib/Player.js'></script>
 			<script src='lib/Game.js'></script>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -30,10 +28,14 @@
 					$('.choices img').on('click', function(){
 						human.picks($(this).data('pick'));
 						computer.autopick();
+						game.updateScores();
 
-					$('#result').text(game.winningMessage());
+					$('<li>'+ game.winningMessage()+'</li>').prependTo('#result').slideDown();
+					$('#result li:gt(3)').fadeOut(function(){
+						$(this).remove();
+					});
 
-					$('#score-counter').text('Human: ' + game.player1WinLoseDraw[0] +  ' | Computer: '+ game.player1WinLoseDraw[1] + ' | Draw: ' +game.player1WinLoseDraw[0]  );
+					$('#score-counter').text('Human: ' + game.player1WinLoseDraw[0] +  ' | Computer: '+ game.player1WinLoseDraw[1] + ' | Draw: ' +game.player1WinLoseDraw[2]  );
 
 					});
 				});
