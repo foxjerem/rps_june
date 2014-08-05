@@ -16,15 +16,12 @@ Game.prototype.PAIRS = {
 Game.prototype.winner = function() {
  	
   if (this._isSamePick()) { 
-    this.player1WinLoseDraw[2] += 1;
     return null; 
   };
  
   if(this._winningVerbFor(this.player1.pick, this.player2.pick)) {
-    this.player1WinLoseDraw[0] += 1;
     return this.player1;
   } else {
-    this.player1WinLoseDraw[1] += 1;
     return this.player2;
   };
 
@@ -32,7 +29,7 @@ Game.prototype.winner = function() {
 
 Game.prototype.loser = function() {
 
-  return (this.winner() === this.player1 ? this.player2 : this.player1);
+  return (this._isPlayer1Win() ? this.player2 : this.player1);
 
 };
 
@@ -60,15 +57,25 @@ Game.prototype.nameMessage = function() {
 
 };
 
+Game.prototype.updateScores = function() {
+  if(this._isSamePick()) { 
+    this.player1WinLoseDraw[2] += 1; 
+  } else if(this._isPlayer1Win()) {
+    this.player1WinLoseDraw[0] += 1; 
+  } else {
+    this.player1WinLoseDraw[1] += 1; 
+  };
+};
+
 Game.prototype._isSamePick = function() {
 	
   return this.player1.pick === this.player2.pick;
 
 };
 
-Game.prototype.__isPlayer1Win = function() {
+Game.prototype._isPlayer1Win = function() {
 	
-  return this._winningVerb !== null;
+  return this.winner() == this.player1;
 
 };
 

@@ -14,6 +14,7 @@
 				<img id ='lizard' src='http://i.imgur.com/mKeep.jpg' data-pick='lizard'>
 				<img id='spock' src='http://i.imgur.com/RpuaX6p.jpg' data-pick='spock'>
 			</section>
+			<h2 id='score-counter'> </h2>
 			<h2 id='result'></h2>
 			<h2 id='winner'></h2>
 	
@@ -30,8 +31,10 @@
 						human.picks($(this).data('pick'));
 						computer.autopick();
 
-						$('#result').text(game.winningMessage());
-						$('#winner').text(game.nameMessage());
+					$('#result').text(game.winningMessage());
+
+					$('#score-counter').text('Human: ' + game.player1WinLoseDraw[0] +  ' | Computer: '+ game.player1WinLoseDraw[1] + ' | Draw: ' +game.player1WinLoseDraw[0]  );
+
 					});
 				});
 			</script>

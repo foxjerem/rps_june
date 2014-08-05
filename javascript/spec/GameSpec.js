@@ -16,16 +16,16 @@ describe("Game", function() {
         
         player1.picks('rock');
         player2.picks('scissors');
-        game.winner();
+        game.updateScores();
         expect(game.player1WinLoseDraw).toEqual([1,0,0]);
 
       });  
 
       it('should count losses', function() {
         
-        player2.picks('rock');
         player1.picks('scissors');
-        game.winner();
+        player2.picks('rock');
+        game.updateScores();
         expect(game.player1WinLoseDraw).toEqual([0,1,0]);
 
       });  
@@ -34,7 +34,7 @@ describe("Game", function() {
         
         player1.picks('rock');
         player2.picks('rock');
-        game.winner();
+        game.updateScores();
         expect(game.player1WinLoseDraw).toEqual([0,0,1]);
 
       });
