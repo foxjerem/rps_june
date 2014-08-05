@@ -10,6 +10,38 @@ describe("Game", function() {
 
   describe('winning and losing', function() {
 
+    describe('counters', function() {
+    
+      it('should count wins', function() {
+        
+        player1.picks('rock');
+        player2.picks('scissors');
+        game.winner();
+        expect(game.player1WinLoseDraw).toEqual([1,0,0]);
+
+      });  
+
+      it('should count losses', function() {
+        
+        player2.picks('rock');
+        player1.picks('scissors');
+        game.winner();
+        expect(game.player1WinLoseDraw).toEqual([0,1,0]);
+
+      });  
+
+      it('should count draws', function() {
+        
+        player1.picks('rock');
+        player2.picks('rock');
+        game.winner();
+        expect(game.player1WinLoseDraw).toEqual([0,0,1]);
+
+      });
+
+    });
+
+
     describe('rock', function() {
 
       it('should beat scissors', function() {
@@ -225,7 +257,7 @@ describe("Game", function() {
         });
 
         expect(drawGameResults).toEqual([null, null, null, null, null]);
-        expect(game.winningMessage()).toBe('DRAW')
+        expect(game.winningMessage()).toBe('DRAW');
 
       });
 

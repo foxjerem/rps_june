@@ -1,6 +1,7 @@
 function Game(player1, player2) {
   this.player1 = player1;
   this.player2 = player2;
+  this.player1WinLoseDraw = [0,0,0];
 };
 
 Game.prototype.PAIRS = {
@@ -14,11 +15,16 @@ Game.prototype.PAIRS = {
 
 Game.prototype.winner = function() {
  	
-  if (this._isSamePick())     { return null; };
+  if (this._isSamePick()) { 
+    this.player1WinLoseDraw[2] += 1;
+    return null; 
+  };
  
   if(this._winningVerbFor(this.player1.pick, this.player2.pick)) {
+    this.player1WinLoseDraw[0] += 1;
     return this.player1;
   } else {
+    this.player1WinLoseDraw[1] += 1;
     return this.player2;
   };
 

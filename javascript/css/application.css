@@ -1,4 +1,45 @@
-img {
+body {
+	color: white;
+	background-color: black;
+	background-image: url(../public/images/dramatic-textures04.jpg);
+	background-size:   100%;                    
+  background-repeat: no-repeat;
+  font-family: Brush script MT;
+}
+
+h1 {
+	font-size: 60pt;
+	margin-bottom: 0%;
+}
+
+h3 {
+	margin-top: 0%;
+	font-size: 30pt;
+}
+
+h2 {
+	font-size: 60pt;
+	margin-bottom: 0%;
+	color: black;
+}
+
+section.choices img {
 	width: 200px;
 	height: auto;	
+	cursor: pointer;
+	opacity: 0.75;
+	transition: 1s opacity ease;
+}
+
+section.choices img:hover {
+	opacity: 1;
+}
+
+
+section.game {
+	margin-top: 5%;
+	margin-right: 10%;
+	margin-left: 10%;
+	margin-bottom: 1%;
+	text-align: center;
 }
