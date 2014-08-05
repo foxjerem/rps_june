@@ -1,7 +1,7 @@
 body {
 	color: white;
 	background-color: black;
-	background-image: url(../public/images/dramatic-textures04.jpg);
+	background-image: url('../images/dramatic-textures04.jpg');
 	background-size:   100%;                    
   background-repeat: no-repeat;
   font-family: Brush script MT;
