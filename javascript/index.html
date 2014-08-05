@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>Rock Paper Scissors Lizard Spock</title>
+		<link rel='stylesheet' type='text/css' href='css/application.css'>
+	</head>
+	<body>
+		<h1>Rock Paper Scissors Lizard Spock</h1>
+		<section class='choices'>
+			<img id='rock' src='http://i.imgur.com/lGHZDFk.jpg' data-pick='rock'>
+			<img id='paper' src='http://i.imgur.com/C8l9hX1.jpg' data-pick='paper'>
+			<img id='scissors' src='http://i.imgur.com/GgaGtnl.jpg' data-pick='scissors'>
+			<img id ='lizard' src='http://i.imgur.com/mKeep.jpg' data-pick='lizard'>
+			<img id='spock' src='http://i.imgur.com/RpuaX6p.jpg' data-pick='spock'>
+		</section>
+		<h2 id='result'></h2>
+
+		<script src='lib/Player.js'></script>
+		<script src='lib/Game.js'></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				var human = new Player('Jeremy');
+				var computer = new Player('Computer');
+				var game = new Game(human, computer);
+
+				$('.choices img').on('click', function(){
+					human.picks($(this).data('pick'));
+					computer.autopick();
+					console.log(human.pick);
+					console.log(computer.pick);
+
+					$('#result').text(game.winningMessage());
+				});
+			});
+		</script>
+
+	</body>
+</html>
